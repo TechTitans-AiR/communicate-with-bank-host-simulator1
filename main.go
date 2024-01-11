@@ -27,7 +27,12 @@ func handleTransaction(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	apiURL := "http://localhost:8083/api/v1/transactions/processTransaction"
+	//APIURL for docker
+	apiURL := "http://host.docker.internal:8083/api/v1/transactions/processTransaction"
+
+	//APIURL for localhost
+	//apiURL := "http://localhost:8083/api/v1/transactions/processTransaction"
+
 	jsonBody, err := json.Marshal(requestBody)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
